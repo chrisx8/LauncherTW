@@ -1,0 +1,5 @@
+- name: Build and deploy LauncherTW
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - launcher-tw

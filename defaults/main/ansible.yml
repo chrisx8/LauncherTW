@@ -1,0 +1,4 @@
+# playbook operation, 'build' or 'deploy'
+# 'build'  - only run build, do not deploy
+# 'deploy' - build and deploy to target host (configuration required)
+operation: 'build'

@@ -1,0 +1,29 @@
+- name: Create temp dir
+  ansible.builtin.tempfile:
+    path: /tmp
+    prefix: LauncherTW_
+    state: directory
+  register: temp_dir
+
+- name: Install HTML to temp dir
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: "{{ temp_dir.path }}/index.html"
+    mode: 0644
+
+- name: Build Tailwind CSS
+  ansible.builtin.command:
+    # TODO: get dir of role
+    # TODO: install tailwindcss-cli somewhere sensible
+    chdir: roles/LauncherTW
+    argv:
+      - npx
+      - tailwindcss
+      - -m
+      - -c
+      - files/tailwind.config.js
+      - -i
+      - files/css/launcher.css
+      - -o
+      - "{{ temp_dir.path }}/launcher.min.css"
+  changed_when: true

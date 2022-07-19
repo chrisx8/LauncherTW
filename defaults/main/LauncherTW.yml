@@ -1,0 +1,43 @@
+# Heavily inspired by Homer (github.com/bastienwirtz/homer)
+
+# [REQUIRED] title of the page: shown in header and as HTML <title>
+page_title: LauncherTW
+
+# [OPTIONAL] Announcement/Message on top of page
+# Required: style, title, icon, content (write in HTML)
+announcement:
+  style: is-warning
+  title: Message
+  icon: fa-solid fa-bullhorn
+  content: "Hello from LauncherTW!"
+
+# [REQUIRED] tiles
+# Options:
+#   Required: name, icon, apps
+#   Optional: NONE
+# Apps options:
+#   Required: name, icon, url
+#   Optional: newtab (deafult = true)
+services:
+  - name: Applications
+    icon: fa-solid fa-briefcase
+    apps:
+      - name: Nextcloud
+        icon: fa-solid fa-cloud
+        url: https://nextcloud.com
+        newtab: true
+      - name: Home Assistant
+        icon: fa-solid fa-house
+        url: https://www.home-assistant.io
+        newtab: true
+  - name: Bookmarks
+    icon: fa-solid fa-bookmark
+    apps:
+      - name: Google
+        icon: fa-brands fa-google
+        url: https://www.google.com
+        newtab: true
+      - name: GitHub
+        icon: fa-brands fa-github
+        url: https://github.com
+        newtab: true

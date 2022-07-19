@@ -1,0 +1,13 @@
+# operation must be either 'build' or 'deploy'
+- name: Validate operation
+  ansible.builtin.assert:
+    that:
+      - operation == 'build' or operation == 'deploy'
+
+- name: Build site on localhost
+  ansible.builtin.import_tasks: build.yml
+- name: Deploy site
+  ansible.builtin.import_tasks: deploy.yml
+  when: operation == 'deploy'
+- name: Post-run
+  ansible.builtin.import_tasks: post.yml
