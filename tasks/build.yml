@@ -18,11 +18,12 @@
         build_output_dir: "{{ _temp_dir.path }}"
   when: build_output_dir == 'TMP'
 
-- name: Install HTML to temp dir
-  ansible.builtin.template:
-    src: index.html.j2
-    dest: "{{ build_output_dir }}/index.html"
-    mode: 0640
+- name: Create css dir in output dir
+  ansible.builtin.file:
+    path: "{{ build_output_dir }}/css"
+    mode: 0750
+    state: directory
+  register: _css_dir
 
 - name: Build Tailwind CSS
   ansible.builtin.command:
@@ -38,5 +39,26 @@
       - -i
       - files/css/launcher.css
       - -o
-      - "{{ build_output_dir }}/launcher.min.css"
+      - "{{ _css_dir.path }}/launcher.min.css"
   changed_when: true
+
+- name: Get info for css output
+  ansible.builtin.stat:
+    path: "{{ _css_dir.path }}/launcher.min.css"
+    checksum_algorithm: md5
+  register: _css_stat
+- name: Copy css output to include checksum
+  ansible.builtin.copy:
+    src: "{{ _css_dir.path }}/launcher.min.css"
+    dest: "{{ _css_dir.path }}/launcher.min.{{ _css_stat.stat.checksum }}.css"
+    mode: 0640
+- name: Remove original css output
+  ansible.builtin.file:
+    path: "{{ _css_dir.path }}/launcher.min.css"
+    state: absent
+
+- name: Install HTML to temp dir
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: "{{ build_output_dir }}/index.html"
+    mode: 0640
