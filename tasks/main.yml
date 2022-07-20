@@ -3,6 +3,7 @@
   ansible.builtin.assert:
     that:
       - operation == 'build' or operation == 'deploy'
+      - build_output_dir is defined and build_output_dir
 
 - name: Build site on localhost
   ansible.builtin.import_tasks: build.yml

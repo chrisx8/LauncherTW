@@ -1,15 +1,28 @@
-- name: Create temp dir
-  ansible.builtin.tempfile:
-    path: /tmp
-    prefix: LauncherTW_
+- name: Create output dir
+  ansible.builtin.file:
+    path: "{{ build_output_dir }}"
     state: directory
-  register: temp_dir
+    mode: 0750
+  when: build_output_dir != 'TMP'
+
+- name: Create temp directory
+  block:
+    - name: Create temp directory
+      ansible.builtin.tempfile:
+        path: /tmp
+        prefix: LauncherTW_
+        state: directory
+      register: _temp_dir
+    - name: Set output to temp directory
+      ansible.builtin.set_fact:
+        build_output_dir: "{{ _temp_dir.path }}"
+  when: build_output_dir == 'TMP'
 
 - name: Install HTML to temp dir
   ansible.builtin.template:
     src: index.html.j2
-    dest: "{{ temp_dir.path }}/index.html"
-    mode: 0644
+    dest: "{{ build_output_dir }}/index.html"
+    mode: 0640
 
 - name: Build Tailwind CSS
   ansible.builtin.command:
@@ -25,5 +38,5 @@
       - -i
       - files/css/launcher.css
       - -o
-      - "{{ temp_dir.path }}/launcher.min.css"
+      - "{{ build_output_dir }}/launcher.min.css"
   changed_when: true

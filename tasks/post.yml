@@ -2,7 +2,7 @@
 - name: Display temp dir location
   ansible.builtin.pause:
     prompt: |
-      LauncherTW has been built successfully! See the build at {{ temp_dir.path }}
+      LauncherTW has been built successfully! See the build at {{ build_output_dir }}
       Press Enter to continue...
 
 # When operation = 'deploy', remove temp dir after deployment
@@ -10,8 +10,9 @@
   block:
     - name: Delete temp dir
       ansible.builtin.file:
-        path: "{{ temp_dir.path }}"
+        path: "{{ build_output_dir }}"
         state: absent
+      when: _temp_dir.path is defined
     - name: Display deployment status
       ansible.builtin.debug:
         msg: "LauncherTW has been deployed successfully!"

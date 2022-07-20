@@ -2,3 +2,8 @@
 # 'build'  - only run build, do not deploy
 # 'deploy' - build and deploy to target host (configuration required)
 operation: 'build'
+
+# build output dir, default to 'TMP'
+# 'TMP' is a special value - Ansible will create a temp directory at
+# /tmp/LauncherTW_randomString
+build_output_dir: 'TMP'
