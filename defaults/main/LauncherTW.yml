@@ -3,6 +3,18 @@
 # [REQUIRED] title of the page: shown in header and as HTML <title>
 page_title: LauncherTW
 
+# [OPTIONAL] links shown in the header bar
+# Required: name, icon, url
+# Optional: newtab (open in new tab)
+header_links:
+  - name: Example
+    icon: fa-solid fa-user
+    url: https://www.example.com
+  - name: Learn more
+    icon: fa-solid fa-film
+    url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+    newtab: true
+
 # [OPTIONAL] Announcement/Message on top of page
 # Required: style, title, icon, content (write in HTML)
 announcement:
