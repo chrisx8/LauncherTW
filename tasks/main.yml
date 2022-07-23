@@ -1,3 +1,5 @@
+# TODO fix check mode
+
 # operation must be either 'build' or 'deploy'
 - name: Validate operation
   ansible.builtin.assert:

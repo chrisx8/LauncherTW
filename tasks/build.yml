@@ -25,11 +25,15 @@
     state: directory
   register: _css_dir
 
+- name: Copy robots.txt to output dir
+  ansible.builtin.copy:
+    src: robots.txt
+    dest: "{{ build_output_dir }}"
+    mode: 0640
+
 - name: Build Tailwind CSS
   ansible.builtin.command:
-    # TODO: get dir of role
-    # TODO: install tailwindcss-cli somewhere sensible
-    chdir: roles/LauncherTW
+    chdir: '{{ role_path }}'
     argv:
       - npx
       - tailwindcss
@@ -42,7 +46,7 @@
       - "{{ _css_dir.path }}/launcher.min.css"
   changed_when: true
 
-- name: Get info for css output
+- name: Get checksum of css output
   ansible.builtin.stat:
     path: "{{ _css_dir.path }}/launcher.min.css"
     checksum_algorithm: md5
