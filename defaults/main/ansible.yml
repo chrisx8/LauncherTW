@@ -1,9 +1,24 @@
+##### GENERAL PLAYBOOK SETTINGS #####
+
 # playbook operation, 'build' or 'deploy'
 # 'build'  - only run build, do not deploy
 # 'deploy' - build and deploy to target host (configuration required)
 operation: 'build'
 
+##### BUILD SETTINGS #####
+
 # build output dir, default to 'TMP'
 # 'TMP' is a special value - Ansible will create a temp directory at
 # /tmp/LauncherTW_randomString
 build_output_dir: 'TMP'
+
+##### DEPLOY SETTINGS #####
+
+# deploy to host
+# this will be passed to Ansible as the 'hosts' directive, so make sure your
+# Ansible inventory is properly configured
+deploy_hosts: 'localhost'
+
+# deploy directory
+# LaunchTW will be deployed here on the REMOTE host
+deploy_target_dir: '/var/www/html'

@@ -35,7 +35,7 @@
         {%- for app in category.apps +%}
         <a href="{{ app.url }}" {% if app.newtab is defined and app.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}>
           <div class="rounded-lg bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 flex flex-row py-4 px-2 dark:text-gray-200 my-4">
-            <div class="basis-1/6 text-center"><i class="fa-xl fa-fw {{ app.icon }}"></i></div>
+            <div class="basis-1/6 text-center"><i class="fa-lg fa-fw {{ app.icon }}"></i></div>
             <div class="basis-5/6 text-lg">{{ app.name }}</div>
           </div>
         </a>

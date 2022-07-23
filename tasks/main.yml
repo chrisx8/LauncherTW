@@ -9,6 +9,7 @@
   ansible.builtin.import_tasks: build.yml
 - name: Deploy site
   ansible.builtin.import_tasks: deploy.yml
+  delegate_to: '{{ deploy_hosts }}'
   when: operation == 'deploy'
 - name: Post-run
   ansible.builtin.import_tasks: post.yml

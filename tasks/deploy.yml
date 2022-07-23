@@ -1,1 +1,5 @@
-# TODO: add deploy to web server
+- name: Copy build output to deploy target dir
+  ansible.builtin.copy:
+    src: '{{ build_output_dir }}/'
+    dest: '{{ deploy_target_dir }}'
+    mode: 0644
