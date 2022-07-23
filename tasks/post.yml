@@ -16,5 +16,5 @@
       when: _temp_dir.path is defined
     - name: Display deployment status
       ansible.builtin.debug:
-        msg: "LauncherTW has been deployed to {{ deploy_hosts }}!"
+        msg: "LauncherTW has been deployed!"
   when: operation == 'deploy'

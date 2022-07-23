@@ -4,12 +4,14 @@
     that:
       - operation == 'build' or operation == 'deploy'
       - build_output_dir is defined and build_output_dir
+      - deploy_target_dir is defined and deploy_target_dir
 
 - name: Build site on localhost
   ansible.builtin.import_tasks: build.yml
+  delegate_to: localhost
 - name: Deploy site
   ansible.builtin.import_tasks: deploy.yml
-  delegate_to: '{{ deploy_hosts }}'
   when: operation == 'deploy'
 - name: Post-run
   ansible.builtin.import_tasks: post.yml
+  delegate_to: localhost

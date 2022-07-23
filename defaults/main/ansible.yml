@@ -3,6 +3,7 @@
 # playbook operation, 'build' or 'deploy'
 # 'build'  - only run build, do not deploy
 # 'deploy' - build and deploy to target host (configuration required)
+# default to 'build'
 operation: 'build'
 
 ##### BUILD SETTINGS #####
@@ -14,11 +15,7 @@ build_output_dir: 'TMP'
 
 ##### DEPLOY SETTINGS #####
 
-# deploy to host
-# this will be passed to Ansible as the 'hosts' directive, so make sure your
-# Ansible inventory is properly configured
-deploy_hosts: 'localhost'
-
 # deploy directory
 # LaunchTW will be deployed here on the REMOTE host
-deploy_target_dir: '/var/www/html'
+# NO DEFAULTS. MUST BE SET EXPLICITLY.
+deploy_target_dir: null
