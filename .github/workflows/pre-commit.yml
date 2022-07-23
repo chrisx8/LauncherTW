@@ -1,0 +1,17 @@
+name: pre-commit checks
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install pre-commit
+        run: |
+          sudo pip install pre-commit
+          pre-commit autoupdate
+      - name: Run pre-commit checks on all files
+        run: pre-commit run --all-files
