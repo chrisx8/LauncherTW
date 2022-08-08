@@ -11,18 +11,21 @@
 <body class="bg-zinc-100 dark:bg-zinc-900">
   <div class="max-w-7xl mx-auto px-6 py-12">
     <!-- Header -->
-    <!-- TODO fix button positioning -->
-    <div>
-      <a href=""><h1 class="text-5xl font-bold dark:text-gray-100">{{ page_title }}</h1></a>
-    </div>
     {% if header_links is defined -%}
     <div class="mt-4">
-      {% for item in header_links -%}
-      <a href="{{ item.url }}" {% if item.newtab is defined and item.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}
-        class="place-self-center rounded-md text-gray-600 dark:text-gray-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 py-3 px-3 mr-1 w-fit">
-        <i class="fa-md fa-fw {{ item.icon }}"></i> {{ item.name }}
-      </a>
-      {%- endfor +%}
+      <div class="md:flex">
+        <div>
+          <a href=""><h1 class="text-5xl font-bold dark:text-gray-100">{{ page_title }}</h1></a>
+        </div>
+        <div class="ml-auto self-center my-4">
+          {% for item in header_links -%}
+          <a href="{{ item.url }}" {% if item.newtab is defined and item.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}
+          class="rounded-md text-gray-600 dark:text-gray-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 py-3 px-3 mr-1 w-fit">
+            <i class="fa-md fa-fw {{ item.icon }}"></i> {{ item.name }}
+          </a>
+          {%- endfor +%}
+        </div>
+      </div>
     </div>
     {%- endif +%}
     <hr class="bg-zinc-200 dark:bg-zinc-700 mt-4 mb-6 border-none h-px">
