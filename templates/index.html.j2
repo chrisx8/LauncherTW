@@ -61,11 +61,12 @@
     <!-- Footer link button -->
     {%+ if footer_link is defined -%}
     <hr class="bg-zinc-200 dark:bg-zinc-700 mb-4 border-none h-px">
-    <a href="{{ footer_link.url }}" {% if footer_link.newtab is defined and footer_link.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}>
-      <div class="rounded-lg bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 py-3 px-3 mx-auto w-fit">
-        <p class="text-sm dark:text-gray-200"><i class="fa-md fa-fw {{ footer_link.icon }}"></i> {{ footer_link.name }}</p>
-      </div>
-    </a>
+    <div class="text-center pt-3">
+      <a class="text-sm dark:text-gray-200 rounded-lg bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 py-3 px-3 w-fit"
+      href="{{ footer_link.url }}" {% if footer_link.newtab is defined and footer_link.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}>
+        <i class="fa-md fa-fw {{ footer_link.icon }}"></i> {{ footer_link.name }}
+      </a>
+    </div>
     {%- endif +%}
   </div>
 </body>
