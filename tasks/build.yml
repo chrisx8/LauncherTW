@@ -25,6 +25,11 @@
     state: directory
   register: _css_dir
 
+- name: Copy img dir to output dir
+  ansible.builtin.copy:
+    src: img
+    dest: "{{ launchertw_build_output_dir }}"
+    mode: 0750
 - name: Copy robots.txt to output dir
   ansible.builtin.copy:
     src: robots.txt
