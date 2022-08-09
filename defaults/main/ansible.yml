@@ -4,18 +4,18 @@
 # 'build'  - only run build, do not deploy
 # 'deploy' - build and deploy to target host (configuration required)
 # default to 'build'
-operation: 'build'
+launchertw_operation: 'build'
 
 ##### BUILD SETTINGS #####
 
 # build output dir, default to 'TMP'
 # 'TMP' is a special value - Ansible will create a temp directory at
 # /tmp/LauncherTW_randomString
-build_output_dir: 'TMP'
+launchertw_build_output_dir: 'TMP'
 
 ##### DEPLOY SETTINGS #####
 
 # deploy directory
 # LaunchTW will be deployed here on the REMOTE host
 # NO DEFAULTS. MUST BE SET EXPLICITLY.
-deploy_target_dir: null
+launchertw_deploy_target_dir: null

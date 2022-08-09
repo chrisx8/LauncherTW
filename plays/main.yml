@@ -2,7 +2,7 @@
   hosts: 'some-web-server'
   gather_facts: false
   vars:
-    operation: deploy
-    deploy_target_dir: /var/www/html
+    launchertw_operation: deploy
+    launchertw_deploy_target_dir: /var/www/html
   roles:
     - LauncherTW

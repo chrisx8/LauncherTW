@@ -1,9 +1,9 @@
 - name: Create output dir
   ansible.builtin.file:
-    path: "{{ build_output_dir }}"
+    path: "{{ launchertw_build_output_dir }}"
     state: directory
     mode: 0750
-  when: build_output_dir != 'TMP'
+  when: launchertw_build_output_dir != 'TMP'
 
 - name: Create temp directory
   block:
@@ -15,12 +15,12 @@
       register: _temp_dir
     - name: Set output to temp directory
       ansible.builtin.set_fact:
-        build_output_dir: "{{ _temp_dir.path }}"
-  when: build_output_dir == 'TMP'
+        launchertw_build_output_dir: "{{ _temp_dir.path }}"
+  when: launchertw_build_output_dir == 'TMP'
 
 - name: Create css dir in output dir
   ansible.builtin.file:
-    path: "{{ build_output_dir }}/css"
+    path: "{{ launchertw_build_output_dir }}/css"
     mode: 0750
     state: directory
   register: _css_dir
@@ -28,7 +28,7 @@
 - name: Copy robots.txt to output dir
   ansible.builtin.copy:
     src: robots.txt
-    dest: "{{ build_output_dir }}"
+    dest: "{{ launchertw_build_output_dir }}"
     mode: 0640
 
 - name: Build Tailwind CSS
@@ -64,5 +64,5 @@
 - name: Install HTML to temp dir
   ansible.builtin.template:
     src: index.html.j2
-    dest: "{{ build_output_dir }}/index.html"
+    dest: "{{ launchertw_build_output_dir }}/index.html"
     mode: 0640

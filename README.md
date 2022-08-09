@@ -19,11 +19,11 @@ The configuration has **two** parts: Ansible role configuration and page content
 
 Refer to [`defaults/main/ansible.yml`](defaults/main/ansible.yml) for config references.
 
-| Variable            | Type                         | Default                            |
-| ------------------- | ---------------------------- | ---------------------------------- |
-| `operation`         | string (`build` or `deploy`) | `build`                            |
-| `build_output_dir`  | string (directory or `TMP`)  | `TMP`                              |
-| `deploy_target_dir` | string (directory)           | **None**. Must specify explicitly. |
+| Variable                       | Type                         | Default                            |
+| ------------------------------ | ---------------------------- | ---------------------------------- |
+| `launchertw_operation`         | string (`build` or `deploy`) | `build`                            |
+| `launchertw_build_output_dir`  | string (directory or `TMP`)  | `TMP`                              |
+| `launchertw_deploy_target_dir` | string (directory)           | **None**. Must specify explicitly. |
 
 ### Page content
 
