@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.html.j2": "html",
         "*.yml": "ansible"
     }
 }
