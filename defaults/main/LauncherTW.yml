@@ -1,5 +1,8 @@
 # Heavily inspired by Homer (github.com/bastienwirtz/homer)
 
+# [REQUIRED] Font Awesome version number. Must use Font Awesome version 6.x
+font_awesome_version: "6.2.0"
+
 # [REQUIRED] title of the page: shown in header and as HTML <title>
 page_title: LauncherTW
 

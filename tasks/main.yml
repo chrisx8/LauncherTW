@@ -7,6 +7,7 @@
       - launchertw_operation == 'build' or launchertw_operation == 'deploy'
       - launchertw_build_output_dir is defined and launchertw_build_output_dir
       - launchertw_deploy_target_dir is defined and launchertw_deploy_target_dir
+      - font_awesome_version is defined and font_awesome_version.startswith('6')
 
 - name: Build site on localhost
   ansible.builtin.import_tasks: build.yml

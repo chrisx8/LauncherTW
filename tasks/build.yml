@@ -36,6 +36,16 @@
     dest: "{{ launchertw_build_output_dir }}"
     mode: 0640
 
+- name: Download and extract Font Awesome
+  ansible.builtin.unarchive:
+    src: "https://use.fontawesome.com/releases/v{{ font_awesome_version }}/fontawesome-free-{{ font_awesome_version }}-web.zip"
+    dest: "{{ launchertw_build_output_dir }}"
+    remote_src: true
+    include:
+      - "fontawesome-free-{{ font_awesome_version }}-web/css/all.min.css"
+      - "fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-brands-400.woff2"
+      - "fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-solid-900.woff2"
+
 - name: Build Tailwind CSS
   ansible.builtin.command:
     chdir: '{{ role_path }}'
