@@ -6,6 +6,7 @@
   when: launchertw_build_output_dir != 'TMP'
 
 - name: Create temp directory
+  when: launchertw_build_output_dir == 'TMP'
   block:
     - name: Create temp directory
       ansible.builtin.tempfile:
@@ -16,7 +17,6 @@
     - name: Set output to temp directory
       ansible.builtin.set_fact:
         launchertw_build_output_dir: "{{ _temp_dir.path }}"
-  when: launchertw_build_output_dir == 'TMP'
 
 - name: Create css dir in output dir
   ansible.builtin.file:
