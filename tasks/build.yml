@@ -3,10 +3,10 @@
     path: "{{ launchertw_build_output_dir }}"
     state: directory
     mode: 0750
-  when: launchertw_build_output_dir != 'TMP'
+  when: launchertw_operation == 'build' and launchertw_build_output_dir != 'TMP'
 
 - name: Create temp directory
-  when: launchertw_build_output_dir == 'TMP'
+  when: launchertw_operation == 'deploy' or launchertw_build_output_dir == 'TMP'
   block:
     - name: Create temp directory
       ansible.builtin.tempfile:

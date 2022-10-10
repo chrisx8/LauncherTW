@@ -11,6 +11,7 @@ launchertw_operation: 'build'
 # build output dir, default to 'TMP'
 # 'TMP' is a special value - Ansible will create a temp directory at
 # /tmp/LauncherTW_randomString
+# IGNORED if launchertw_operation = 'deploy'
 launchertw_build_output_dir: 'TMP'
 
 ##### DEPLOY SETTINGS #####

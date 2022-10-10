@@ -1,5 +1,5 @@
 # When operation = 'build', display temp dir location
-- name: Display temp dir location
+- name: Display build output dir
   ansible.builtin.pause:
     prompt: |
       LauncherTW has been built successfully! See the build at
