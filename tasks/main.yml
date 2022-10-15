@@ -11,10 +11,12 @@
 
 - name: Build site on localhost
   ansible.builtin.import_tasks: build.yml
+  check_mode: false
   delegate_to: localhost
 - name: Deploy site
   ansible.builtin.import_tasks: deploy.yml
   when: launchertw_operation == 'deploy'
 - name: Post-run
   ansible.builtin.import_tasks: post.yml
+  check_mode: false
   delegate_to: localhost
