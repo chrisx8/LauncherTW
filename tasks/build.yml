@@ -38,7 +38,8 @@
 
 - name: Download and extract Font Awesome
   ansible.builtin.unarchive:
-    src: "https://use.fontawesome.com/releases/v{{ font_awesome_version }}/fontawesome-free-{{ font_awesome_version }}-web.zip"  # yamllint disable-line rule:line-length
+    # yamllint disable-line rule:line-length
+    src: "https://use.fontawesome.com/releases/v{{ font_awesome_version }}/fontawesome-free-{{ font_awesome_version }}-web.zip"
     dest: "{{ launchertw_build_output_dir }}"
     remote_src: true
     include:

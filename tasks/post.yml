@@ -8,14 +8,8 @@
   when: launchertw_operation == 'build'
 
 # When operation = 'deploy', remove temp dir after deployment
-- name: Post-deploy cleanup
-  when: launchertw_operation == 'deploy'
-  block:
-    - name: Delete temp dir
-      ansible.builtin.file:
-        path: "{{ launchertw_build_output_dir }}"
-        state: absent
-      when: _temp_dir.path is defined
-    - name: Display deployment status
-      ansible.builtin.debug:
-        msg: "LauncherTW has been deployed!"
+- name: Post-deploy delete temp dir
+  ansible.builtin.file:
+    path: "{{ launchertw_build_output_dir }}"
+    state: absent
+  when: launchertw_operation == 'deploy' and _temp_dir.path is defined
