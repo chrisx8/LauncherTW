@@ -49,7 +49,7 @@
 
 - name: Build Tailwind CSS
   ansible.builtin.command:
-    chdir: '{{ role_path }}'
+    chdir: "{{ role_path }}"
     argv:
       - npx
       - tailwindcss

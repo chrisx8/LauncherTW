@@ -1,5 +1,5 @@
 - name: Build and deploy LauncherTW
-  hosts: 'some-web-server'
+  hosts: "some-web-server"
   gather_facts: false
   vars:
     launchertw_operation: deploy

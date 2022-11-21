@@ -4,7 +4,7 @@
 # 'build'  - only run build, do not deploy
 # 'deploy' - build and deploy to target host (configuration required)
 # default to 'build'
-launchertw_operation: 'build'
+launchertw_operation: "build"
 
 ##### BUILD SETTINGS #####
 
@@ -12,7 +12,7 @@ launchertw_operation: 'build'
 # 'TMP' is a special value - Ansible will create a temp directory at
 # /tmp/LauncherTW_randomString
 # IGNORED if launchertw_operation = 'deploy'
-launchertw_build_output_dir: 'TMP'
+launchertw_build_output_dir: "TMP"
 
 ##### DEPLOY SETTINGS #####
 
