@@ -1,10 +1,3 @@
-- name: Create output dir
-  ansible.builtin.file:
-    path: "{{ launchertw_build_output_dir }}"
-    state: directory
-    mode: 0750
-  when: launchertw_operation == 'build' and launchertw_build_output_dir != 'TMP'
-
 - name: Create temp directory
   when: launchertw_operation == 'deploy' or launchertw_build_output_dir == 'TMP'
   block:
@@ -13,30 +6,31 @@
         path: /tmp
         prefix: LauncherTW_
         state: directory
+      changed_when: false
       register: _temp_dir
     - name: Set output to temp directory
       ansible.builtin.set_fact:
         launchertw_build_output_dir: "{{ _temp_dir.path }}"
 
-- name: Create css dir in output dir
+- name: Create output dir
   ansible.builtin.file:
     path: "{{ launchertw_build_output_dir }}/css"
     mode: 0750
     state: directory
+  changed_when: false
   register: _css_dir
 
-- name: Copy img dir to output dir
+- name: Copy static assets to output dir
   ansible.builtin.copy:
-    src: img
-    dest: "{{ launchertw_build_output_dir }}"
-    mode: 0750
-- name: Copy robots.txt to output dir
-  ansible.builtin.copy:
-    src: robots.txt
+    src: "{{ item }}"
     dest: "{{ launchertw_build_output_dir }}"
     mode: 0640
+  changed_when: false
+  loop:
+    - img
+    - robots.txt
 
-- name: Download and extract Font Awesome
+- name: Download Font Awesome
   ansible.builtin.unarchive:
     # yamllint disable-line rule:line-length
     src: "https://use.fontawesome.com/releases/v{{ font_awesome_version }}/fontawesome-free-{{ font_awesome_version }}-web.zip"
@@ -46,6 +40,7 @@
       - "fontawesome-free-{{ font_awesome_version }}-web/css/all.min.css"
       - "fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-brands-400.woff2"
       - "fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-solid-900.woff2"
+  changed_when: false
 
 - name: Build Tailwind CSS
   ansible.builtin.command:
@@ -60,25 +55,28 @@
       - files/css/launcher.css
       - -o
       - "{{ _css_dir.path }}/launcher.min.css"
-  changed_when: true
+  changed_when: false
 
 - name: Get checksum of css output
   ansible.builtin.stat:
     path: "{{ _css_dir.path }}/launcher.min.css"
     checksum_algorithm: md5
   register: _css_stat
-- name: Copy css output to include checksum
+- name: Rename css output to include checksum
   ansible.builtin.copy:
     src: "{{ _css_dir.path }}/launcher.min.css"
     dest: "{{ _css_dir.path }}/launcher.min.{{ _css_stat.stat.checksum }}.css"
     mode: 0640
+  changed_when: false
 - name: Remove original css output
   ansible.builtin.file:
     path: "{{ _css_dir.path }}/launcher.min.css"
     state: absent
+  changed_when: false
 
-- name: Install HTML to temp dir
+- name: Generate index HTML
   ansible.builtin.template:
     src: index.html.j2
     dest: "{{ launchertw_build_output_dir }}/index.html"
     mode: 0640
+  changed_when: false
