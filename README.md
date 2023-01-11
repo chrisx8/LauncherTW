@@ -6,10 +6,19 @@ Yet another homelab dashboard with ZERO Javascript, powered by TailwindCSS and A
 
 ## Setup
 
+### Ansible
+
 LauncherTW is an Ansible role, which means you need to install Ansible.
 
-You can install Ansible with your OS's package manager, such as `apt`, `dnf`, `pacman`, or `brew`, or you can
-[install with `pip`](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+You can install Ansible with your OS's package manager, such as `apt`, `dnf`, `pacman`, or `brew`. You can also [install with `pip`](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+
+### Tailwind CSS
+
+LauncherTW uses [Tailwind CSS](https://tailwindcss.com/), specifically the `tailwindcss` CLI. To install, run:
+
+```sh
+npm install
+```
 
 ## Configuration
 
@@ -27,8 +36,7 @@ Refer to [`defaults/main/ansible.yml`](defaults/main/ansible.yml) for config ref
 
 ### Page content
 
-A default/sample page content configuration is provided
-[here (`defaults/main/LauncherTW.yml`)](defaults/main/LauncherTW.yml). Refer to this file for config references.
+Refer to [`defaults/main/LauncherTW.yml`)](defaults/main/LauncherTW.yml) for page content configuration.
 
 ## Credits
 
@@ -39,3 +47,5 @@ A default/sample page content configuration is provided
 ## License
 
 [Apache License 2.0](LICENSE)
+
+Copyright (c) 2022-2023 Chris Xiao
