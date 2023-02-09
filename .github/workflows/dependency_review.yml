@@ -1,0 +1,10 @@
+name: dependency review
+on:
+  pull_request:
+jobs:
+  dependency-review:
+    name: dependency review
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/dependency-review-action@v3

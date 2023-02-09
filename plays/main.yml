@@ -1,8 +1,0 @@
-- name: Build and deploy LauncherTW
-  hosts: "some-web-server"
-  gather_facts: false
-  vars:
-    launchertw_operation: deploy
-    launchertw_deploy_target_dir: /var/www/html
-  roles:
-    - LauncherTW
