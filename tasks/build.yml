@@ -1,3 +1,4 @@
+---
 - name: Create temp directory
   when: launchertw_operation == 'deploy' or launchertw_build_output_dir == 'TMP'
   block:
@@ -15,7 +16,7 @@
 - name: Create output dir
   ansible.builtin.file:
     path: "{{ launchertw_build_output_dir }}/css"
-    mode: 0750
+    mode: "0750"
     state: directory
   changed_when: false
   register: _css_dir
@@ -24,7 +25,7 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ launchertw_build_output_dir }}"
-    mode: 0640
+    mode: "0640"
   changed_when: false
   loop:
     - img
@@ -33,13 +34,13 @@
 - name: Download Font Awesome
   ansible.builtin.unarchive:
     # yamllint disable-line rule:line-length
-    src: "https://use.fontawesome.com/releases/v{{ font_awesome_version }}/fontawesome-free-{{ font_awesome_version }}-web.zip"
+    src: https://use.fontawesome.com/releases/v{{ font_awesome_version }}/fontawesome-free-{{ font_awesome_version }}-web.zip
     dest: "{{ launchertw_build_output_dir }}"
     remote_src: true
     include:
-      - "fontawesome-free-{{ font_awesome_version }}-web/css/all.min.css"
-      - "fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-brands-400.woff2"
-      - "fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-solid-900.woff2"
+      - fontawesome-free-{{ font_awesome_version }}-web/css/all.min.css
+      - fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-brands-400.woff2
+      - fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-solid-900.woff2
   changed_when: false
 
 - name: Build Tailwind CSS
@@ -66,7 +67,7 @@
   ansible.builtin.copy:
     src: "{{ _css_dir.path }}/launcher.min.css"
     dest: "{{ _css_dir.path }}/launcher.min.{{ _css_stat.stat.checksum }}.css"
-    mode: 0640
+    mode: "0640"
   changed_when: false
 - name: Remove original css output
   ansible.builtin.file:
@@ -78,5 +79,5 @@
   ansible.builtin.template:
     src: index.html.j2
     dest: "{{ launchertw_build_output_dir }}/index.html"
-    mode: 0640
+    mode: "0640"
   changed_when: false

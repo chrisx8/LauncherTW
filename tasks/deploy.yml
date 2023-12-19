@@ -1,5 +1,6 @@
+---
 - name: Copy build output to deploy target dir
   ansible.builtin.copy:
     src: "{{ launchertw_build_output_dir }}/"
     dest: "{{ launchertw_deploy_target_dir }}"
-    mode: 0644
+    mode: "0644"

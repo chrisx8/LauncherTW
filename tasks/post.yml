@@ -1,3 +1,4 @@
+---
 # When operation = 'deploy', remove temp dir after deployment
 - name: Post-deploy delete temp dir
   ansible.builtin.file:
