@@ -42,7 +42,7 @@ Refer to [`defaults/main/LauncherTW.yml`)](defaults/main/LauncherTW.yml) for pag
 
 - [Ansible](https://docs.ansible.com/): an open source software suite that enables Infrastructure as Code (IaC).
 - [TailwindCSS](https://tailwindcss.com/): a utility-first CSS framework
-- The config layout is *heavily inspired* by [Homer](https://github.com/bastienwirtz/homer)
+- The config layout is _heavily inspired_ by [Homer](https://github.com/bastienwirtz/homer)
 
 ## License
 
