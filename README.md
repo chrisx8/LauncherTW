@@ -10,8 +10,6 @@ Yet another homelab dashboard with ZERO Javascript, powered by TailwindCSS and A
 
 LauncherTW is an Ansible role, which means you need to install Ansible.
 
-You can install Ansible with your OS's package manager, such as `apt`, `dnf`, `pacman`, or `brew`. You can also [install with `pip`](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
-
 ### Tailwind CSS
 
 LauncherTW uses [Tailwind CSS](https://tailwindcss.com/), specifically the `tailwindcss` CLI. To install, run:
