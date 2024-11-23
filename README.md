@@ -34,7 +34,7 @@ Refer to [`defaults/main/ansible.yml`](defaults/main/ansible.yml) for config ref
 
 ### Page content
 
-Refer to [`defaults/main/LauncherTW.yml`)](defaults/main/LauncherTW.yml) for page content configuration.
+Refer to [`vars.example.yml`](vars.example.yml) for page content configuration.
 
 ## Credits
 

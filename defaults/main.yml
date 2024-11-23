@@ -1,6 +1,9 @@
 ---
 ##### GENERAL PLAYBOOK SETTINGS #####
 
+# [REQUIRED] Font Awesome version number. Must use Font Awesome version 6.x
+font_awesome_version: 6.7.1
+
 # playbook operation, 'build' or 'deploy'
 # 'build'  - only run build, do not deploy
 # 'deploy' - build and deploy to target host (configuration required)

@@ -3,10 +3,14 @@
 - name: Validate operation
   ansible.builtin.assert:
     that:
-      - launchertw_operation == 'build' or launchertw_operation == 'deploy'
-      - launchertw_build_output_dir is defined and launchertw_build_output_dir
-      - launchertw_deploy_target_dir is defined and launchertw_deploy_target_dir
-      - font_awesome_version is defined and font_awesome_version.startswith('6')
+      - launchertw_operation in ('build', 'deploy')
+      # launchertw_build_output_dir is required for 'build'
+      - launchertw_operation == 'deploy' or launchertw_build_output_dir
+      # launchertw_deploy_target_dir is required for 'deploy'
+      - launchertw_operation == 'build' or launchertw_deploy_target_dir
+      # Font Awesome v6.x
+      - font_awesome_version is version('6.0.0', 'gt', version_type='semver')
+      - font_awesome_version is version('7.0.0', 'lt', version_type='semver')
 
 - name: Build site on localhost
   ansible.builtin.import_tasks: build.yml
