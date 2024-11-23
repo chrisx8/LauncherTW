@@ -14,11 +14,11 @@
 <body class="bg-zinc-100 dark:bg-zinc-900">
   <div class="max-w-7xl mx-auto px-6 py-12">
     <!-- Header -->
-    {% if header_links is defined -%}
     <div class="md:flex">
       <div>
         <a href=""><h1 class="text-5xl font-bold dark:text-gray-100">{{ page_title }}</h1></a>
       </div>
+      {% if header_links is defined and header_links -%}
       <div class="ml-auto self-center my-4">
         {% for item in header_links -%}
         <a href="{{ item.url }}" {% if item.newtab is defined and item.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}
@@ -27,10 +27,10 @@
         </a>
         {%- endfor +%}
       </div>
+      {%- endif +%}
     </div>
-    {%- endif +%}
     <hr class="bg-zinc-200 dark:bg-zinc-700 mt-4 mb-6 border-none h-px">
-    {%+ if announcement is defined -%}
+    {%+ if announcement is defined and announcement -%}
     <!-- Announcement banner -->
     <div class="rounded-t-md bg-yellow-400 py-2 px-5">
       <p class="text-lg font-semibold">
@@ -63,7 +63,7 @@
     {% endif +%}
     {%- endfor +%}
     <!-- Footer link button -->
-    {%+ if footer_link is defined -%}
+    {%+ if footer_link is defined and footer_link -%}
     <hr class="bg-zinc-200 dark:bg-zinc-700 mt-5 mb-4 border-none h-px">
     <div class="text-center pt-3">
       <a class="text-sm dark:text-gray-200 rounded-lg bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 py-3 px-3 w-fit"
