@@ -11,6 +11,7 @@ header_links:
   - name: Example
     icon: fa-solid fa-user
     url: https://www.example.com
+    newtab: false
   - name: Learn more
     icon: fa-solid fa-film
     url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
