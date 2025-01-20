@@ -21,7 +21,7 @@
       {% if header_links is defined and header_links -%}
       <div class="ml-auto self-center my-4">
         {% for item in header_links -%}
-        <a href="{{ item.url }}" {% if item.newtab is defined and item.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}
+        <a href="{{ item.url }}" {% if item.newtab is undefined or item.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}
         class="rounded-md text-gray-600 dark:text-gray-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 py-3 px-3 mr-1 w-fit">
           <i class="fa-md fa-fw {{ item.icon }}"></i> {{ item.name }}
         </a>
