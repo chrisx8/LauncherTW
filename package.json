@@ -4,7 +4,7 @@
     "tailwindcss": "^4.0.0"
   },
   "optionalDependencies": {
-    "@parcel/watcher": "^2.5.0",
+    "@parcel/watcher": "^2.5.1",
     "@tailwindcss/oxide": "^4.0.0",
     "lightningcss": "^1.29.1"
   }
