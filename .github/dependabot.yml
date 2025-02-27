@@ -7,5 +7,10 @@ updates:
       interval: daily
   - package-ecosystem: npm
     directory: /
+    groups:
+      tailwindcss:
+        patterns:
+          - "@tailwindcss/*"
+          - tailwindcss
     schedule:
       interval: daily
