@@ -2,6 +2,9 @@
 name: pre-commit checks
 on: # yamllint disable-line rule:truthy
   pull_request:
+  push:
+    branches_ignore:
+      - main
 jobs:
   pre-commit:
     runs-on: ubuntu-latest

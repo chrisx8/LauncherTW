@@ -5,9 +5,9 @@
     that:
       - launchertw_operation in ('build', 'deploy')
       # launchertw_build_output_dir is required for 'build'
-      - launchertw_operation == 'deploy' or launchertw_build_output_dir
+      - launchertw_operation == 'deploy' or launchertw_build_output_dir | length > 0
       # launchertw_deploy_target_dir is required for 'deploy'
-      - launchertw_operation == 'build' or launchertw_deploy_target_dir
+      - launchertw_operation == 'build' or launchertw_deploy_target_dir | length > 0
       # Font Awesome v6.x
       - font_awesome_version is version('6.0.0', 'gt', version_type='semver')
       - font_awesome_version is version('7.0.0', 'lt', version_type='semver')
