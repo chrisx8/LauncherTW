@@ -10,9 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
       - name: Install pre-commit
         run: |
-          sudo pip install pre-commit
+          pip install --user pre-commit
           pre-commit autoupdate
       - name: Run pre-commit checks on all files
         run: pre-commit run --all-files
