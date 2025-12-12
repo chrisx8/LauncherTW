@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "@tailwindcss/cli": "^4.1.18",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.18"
   },
   "optionalDependencies": {
     "@parcel/watcher": "^2.5.1",
-    "@tailwindcss/oxide": "^4.1.17",
+    "@tailwindcss/oxide": "^4.1.18",
     "lightningcss": "^1.30.2"
   }
 }
