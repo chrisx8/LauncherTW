@@ -1,17 +1,4 @@
 ---
-- name: Create temp directory
-  when: launchertw_operation == 'deploy' or launchertw_build_output_dir == 'TMP'
-  block:
-    - name: Create temp directory
-      ansible.builtin.tempfile:
-        path: /tmp
-        prefix: LauncherTW_
-        state: directory
-      register: _temp_dir
-    - name: Set output to temp directory
-      ansible.builtin.set_fact:
-        launchertw_build_output_dir: "{{ _temp_dir.path }}"
-
 - name: Create output dir
   ansible.builtin.file:
     path: "{{ launchertw_build_output_dir }}/css"
@@ -31,13 +18,13 @@
 - name: Download Font Awesome
   ansible.builtin.unarchive:
     # yamllint disable-line rule:line-length
-    src: https://use.fontawesome.com/releases/v{{ font_awesome_version }}/fontawesome-free-{{ font_awesome_version }}-web.zip
+    src: https://use.fontawesome.com/releases/v{{ launchertw_font_awesome_version }}/fontawesome-free-{{ launchertw_font_awesome_version }}-web.zip
     dest: "{{ launchertw_build_output_dir }}"
     remote_src: true
     include:
-      - fontawesome-free-{{ font_awesome_version }}-web/css/all.min.css
-      - fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-brands-400.woff2
-      - fontawesome-free-{{ font_awesome_version }}-web/webfonts/fa-solid-900.woff2
+      - fontawesome-free-{{ launchertw_font_awesome_version }}-web/css/all.min.css
+      - fontawesome-free-{{ launchertw_font_awesome_version }}-web/webfonts/fa-brands-400.woff2
+      - fontawesome-free-{{ launchertw_font_awesome_version }}-web/webfonts/fa-solid-900.woff2
 
 - name: Build Tailwind CSS
   changed_when: true
@@ -59,11 +46,13 @@
     path: "{{ _css_dir.path }}/launcher.min.css"
     checksum_algorithm: md5
   register: _css_stat
+
 - name: Rename css output to include checksum
   ansible.builtin.copy:
     src: "{{ _css_dir.path }}/launcher.min.css"
     dest: "{{ _css_dir.path }}/launcher.min.{{ _css_stat.stat.checksum }}.css"
     mode: "0640"
+
 - name: Remove original css output
   ansible.builtin.file:
     path: "{{ _css_dir.path }}/launcher.min.css"

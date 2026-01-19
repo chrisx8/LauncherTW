@@ -1,26 +1,6 @@
 ---
-##### GENERAL PLAYBOOK SETTINGS #####
+# Font Awesome version number. Must use Font Awesome version 6.x
+launchertw_font_awesome_version: 6.7.1
 
-# [REQUIRED] Font Awesome version number. Must use Font Awesome version 6.x
-font_awesome_version: 6.7.1
-
-# playbook operation, 'build' or 'deploy'
-# 'build'  - only run build, do not deploy
-# 'deploy' - build and deploy to target host (configuration required)
-# default to 'build'
-launchertw_operation: build
-
-##### BUILD SETTINGS #####
-
-# build output dir, default to 'TMP'
-# 'TMP' is a special value - Ansible will create a temp directory at
-# /tmp/LauncherTW_randomString
-# IGNORED if launchertw_operation = 'deploy'
-launchertw_build_output_dir: TMP
-
-##### DEPLOY SETTINGS #####
-
-# deploy directory
-# LaunchTW will be deployed here on the REMOTE host
-# NO DEFAULTS. MUST BE SET EXPLICITLY.
-launchertw_deploy_target_dir:
+# Build output dir, no defaults
+launchertw_build_output_dir: null

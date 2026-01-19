@@ -24,13 +24,12 @@ The configuration has **two** parts: Ansible role configuration and page content
 
 ### Ansible role configuration
 
-Refer to [`defaults/main/ansible.yml`](defaults/main/ansible.yml) for config references.
+Refer to [`defaults/main.yml`](defaults/main.yml) for config references.
 
-| Variable                       | Type                         | Default                            |
-| ------------------------------ | ---------------------------- | ---------------------------------- |
-| `launchertw_operation`         | string (`build` or `deploy`) | `build`                            |
-| `launchertw_build_output_dir`  | string (directory or `TMP`)  | `TMP`                              |
-| `launchertw_deploy_target_dir` | string (directory)           | **None**. Must specify explicitly. |
+| Variable                          | Type               | Default |
+| --------------------------------- | ------------------ | ------- |
+| `launchertw_build_output_dir`     | string (directory) | None    |
+| `launchertw_font_awesome_version` | string             | `6.7.1` |
 
 ### Page content
 

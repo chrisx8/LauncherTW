@@ -1,8 +1,0 @@
----
-# When operation = 'deploy', remove temp dir after deployment
-- name: Post-deploy delete temp dir
-  ansible.builtin.file:
-    path: "{{ launchertw_build_output_dir }}"
-    state: absent
-  changed_when: false
-  when: launchertw_operation == 'deploy' and _temp_dir.path is defined

@@ -1,27 +1,14 @@
 ---
-# operation must be either 'build' or 'deploy'
 - name: Validate operation
   ansible.builtin.assert:
     that:
-      - launchertw_operation in ('build', 'deploy')
-      # launchertw_build_output_dir is required for 'build'
-      - launchertw_operation == 'deploy' or launchertw_build_output_dir | length > 0
-      # launchertw_deploy_target_dir is required for 'deploy'
-      - launchertw_operation == 'build' or launchertw_deploy_target_dir | length > 0
+      # Build output dir set
+      - launchertw_build_output_dir | type_debug == 'str'
       # Font Awesome v6.x
-      - font_awesome_version is version('6.0.0', 'gt', version_type='semver')
-      - font_awesome_version is version('7.0.0', 'lt', version_type='semver')
+      - launchertw_font_awesome_version is version('6.0.0', 'gt', version_type='semver')
+      - launchertw_font_awesome_version is version('7.0.0', 'lt', version_type='semver')
 
-- name: Build site on localhost
+- name: Build on localhost
+  check_mode: false
+  delegate_to: localhost
   ansible.builtin.import_tasks: build.yml
-  check_mode: false
-  delegate_to: localhost
-
-- name: Deploy site
-  ansible.builtin.import_tasks: deploy.yml
-  when: launchertw_operation == 'deploy'
-
-- name: Post-run
-  ansible.builtin.import_tasks: post.yml
-  check_mode: false
-  delegate_to: localhost
