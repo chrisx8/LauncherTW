@@ -6,6 +6,6 @@
   "optionalDependencies": {
     "@parcel/watcher": "^2.5.6",
     "@tailwindcss/oxide": "^4.2.1",
-    "lightningcss": "^1.31.1"
+    "lightningcss": "^1.32.0"
   }
 }
