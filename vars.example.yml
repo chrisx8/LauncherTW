@@ -59,8 +59,8 @@ services:
 # [OPTIONAL] button in the footer
 # Required: name, icon, url
 # Optional: newtab
-footer_link:
-  name: LauncherTW on GitHub
-  icon: fa-brands fa-github
-  url: https://github.com/chrisx8/LauncherTW
-  newtab: true
+footer_links:
+  - name: LauncherTW on GitHub
+    icon: fa-brands fa-github
+    url: https://github.com/chrisx8/LauncherTW
+    newtab: true

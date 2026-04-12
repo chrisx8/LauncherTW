@@ -62,14 +62,17 @@
     </div>
     {% endif +%}
     {%- endfor +%}
-    <!-- Footer link button -->
-    {%+ if footer_link is defined and footer_link -%}
+    <!-- Footer links buttons -->
+    {%+ if footer_links is defined and footer_links -%}
     <hr class="bg-zinc-200 dark:bg-zinc-700 mt-5 mb-4 border-none h-px">
     <div class="text-center pt-3">
+      {%- for link in footer_links +%}
       <a class="text-sm dark:text-gray-200 rounded-lg bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 py-3 px-3 w-fit"
-      href="{{ footer_link.url }}" {% if footer_link.newtab is undefined or footer_link.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}>
-        <i class="fa-md fa-fw {{ footer_link.icon }}"></i> {{ footer_link.name }}
+      href="{{ link.url }}" {% if link.newtab is undefined or link.newtab %}rel="noopener noreferrer" target="_blank"{% endif %}>
+        <i class="fa-md fa-fw {{ link.icon }}"></i> {{ link.name }}
       </a>
+      &nbsp;
+      {%- endfor +%}
     </div>
     {%- endif +%}
   </div>
