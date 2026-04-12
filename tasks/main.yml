@@ -4,9 +4,9 @@
     that:
       # Build output dir set
       - launchertw_build_output_dir | type_debug == 'str'
-      # Font Awesome v6.x
-      - launchertw_font_awesome_version is version('6.0.0', 'gt', version_type='semver')
-      - launchertw_font_awesome_version is version('7.0.0', 'lt', version_type='semver')
+      # Font Awesome v7.x
+      - launchertw_font_awesome_version is version('7.0.0', 'gt', version_type='semver')
+      - launchertw_font_awesome_version is version('8.0.0', 'lt', version_type='semver')
 
 - name: Build on localhost
   check_mode: false

@@ -29,7 +29,7 @@ Refer to [`defaults/main.yml`](defaults/main.yml) for config references.
 | Variable                          | Type               | Default |
 | --------------------------------- | ------------------ | ------- |
 | `launchertw_build_output_dir`     | string (directory) | None    |
-| `launchertw_font_awesome_version` | string             | `6.7.1` |
+| `launchertw_font_awesome_version` | string             | `7.2.0` |
 
 ### Page content
 

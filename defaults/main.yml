@@ -1,6 +1,6 @@
 ---
-# Font Awesome version number. Must use Font Awesome version 6.x
-launchertw_font_awesome_version: 6.7.1
+# Font Awesome version number. Must use Font Awesome version 7.x
+launchertw_font_awesome_version: 7.2.0
 
 # Build output dir, no defaults
 launchertw_build_output_dir: null
