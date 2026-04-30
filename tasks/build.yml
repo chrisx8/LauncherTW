@@ -34,8 +34,6 @@
       - npx
       - tailwindcss
       - -m
-      - -c
-      - files/tailwind.config.js
       - -i
       - files/css/launcher.css
       - -o
