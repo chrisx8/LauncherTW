@@ -5,6 +5,8 @@ updates:
     directory: /
     schedule:
       interval: daily
+    cooldown:
+      default-days: 3
   - package-ecosystem: npm
     directory: /
     groups:
@@ -14,3 +16,5 @@ updates:
           - tailwindcss
     schedule:
       interval: daily
+    cooldown:
+      default-days: 3
