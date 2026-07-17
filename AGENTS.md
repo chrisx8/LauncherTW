@@ -30,7 +30,7 @@ Page content is defined via Ansible variables (see `vars.example.yml` for schema
 
 Run pre-commit hooks using `prek`: `prek run --all-files`.
 
-CI uses `uvx prek run --all-files`.
+CI runs prek via the `j178/prek-action` GitHub Action.
 
 Note: Use `prek` not `pre-commit`. When running locally, assume `prek` is already installed. **DO NOT INSTALL PACKAGES.**
 
