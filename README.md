@@ -15,7 +15,7 @@ LauncherTW is an Ansible role, which means you need to install Ansible.
 LauncherTW uses [Tailwind CSS](https://tailwindcss.com/), specifically the `tailwindcss` CLI. To install, run:
 
 ```sh
-npm install
+pnpm install
 ```
 
 ## Configuration

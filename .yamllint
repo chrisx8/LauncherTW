@@ -35,3 +35,6 @@ yaml-files:
   - "*.yaml"
   - "*.yml"
   - .yamllint
+
+ignore: |
+  pnpm-lock.yaml
