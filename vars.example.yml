@@ -31,7 +31,7 @@ announcement:
 #   Optional: NONE
 # Apps options:
 #   Required: name, icon, url
-#   Optional: newtab (deafult = true)
+#   Optional: newtab (deafult = false)
 services:
   - name: Applications
     icon: fa-solid fa-briefcase
